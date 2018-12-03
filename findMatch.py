@@ -1,28 +1,9 @@
-twoCount = 0
-threeCount = 0
-
-def sortThem(serialNumber):
-    global twoCount
-    global threeCount
-    countDict = {}
-    for char in serialNumber:
-        if (char in countDict):
-            countDict[char] = countDict[char] + 1
-        else:
-            countDict[char] = 1
-    if (2 in countDict.values()):
-        twoCount += 1
-    if (3 in countDict.values()):
-        threeCount += 1
-    countDict.values()
-
 ids = []
 file = open('input2.txt', 'r')
 for line in file:
     ids.append(line.strip())
 file.close()
 
-counter = 0
 idLength = len(ids[0])
 myDict = {}
 for x in ids:
@@ -44,6 +25,9 @@ for x in ids:
                     if error > 1:
                         del myDict[x][y]
                         break;
-finalList = []
 
-print myDict
+for x in myDict:
+    for y in myDict[x]:
+        if 1 in myDict[x][y]:
+            myIndex = myDict[x][y].index(1)
+            print y[:myIndex] + y[(myIndex + 1):]
