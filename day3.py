@@ -5,7 +5,13 @@ for point in claims:
     splitList = point.split()
     list.append(tuple([splitList[2].strip(":").split(","), splitList[3].split("x")]))
 myDict = {}
-for x in range(int(list[0][1][0])):
-    for y in range(int(list[0][1][1])):
-        myDict[tuple([int(list[0][0][0]) + x, int(list[0][0][1]) + y])] = 0
-print myDict
+yourDict = {}
+for row in list:
+    for x in range(int(row[1][0])):
+        for y in range(int(row[1][1])):
+            theTuple = tuple([int(row[0][0]) + x, int(row[0][1]) + y])
+            if theTuple in myDict:
+                yourDict[theTuple] = 0
+            else:
+                myDict[theTuple] = 0
+print len(yourDict.keys())
